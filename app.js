@@ -16,20 +16,14 @@ const feedback = document.getElementById("formFeedback");
 
 async function loadPortfolioData() {
   try {
-    const [profileRes, projectsRes] = await Promise.all([
-      fetch("/api/profile"),
-      fetch("/api/projects")
-    ]);
+    const res = await fetch("data/content.json");
+    const data = await res.json();
 
-    const profile = await profileRes.json();
-    const projects = await projectsRes.json();
-
-    fillProfile(profile);
-    fillProjects(projects);
+    fillProfile(data.profile);
+    fillProjects(data.projects);
     startRevealAnimation();
   } catch (error) {
     console.error(error);
-    feedback.textContent = "Nao foi possivel carregar os dados.";
   }
 }
 
@@ -83,35 +77,16 @@ function startRevealAnimation() {
   });
 }
 
-contactForm.addEventListener("submit", async (event) => {
+contactForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  feedback.textContent = "Enviando...";
-
   const formData = new FormData(contactForm);
-  const payload = Object.fromEntries(formData.entries());
-
-  try {
-    const response = await fetch("/api/messages", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(payload)
-    });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      feedback.textContent = data.error || "Erro ao enviar mensagem.";
-      return;
-    }
-
-    feedback.textContent = "Mensagem enviada com sucesso.";
-    contactForm.reset();
-  } catch (error) {
-    console.error(error);
-    feedback.textContent = "Falha de rede ao enviar mensagem.";
-  }
+  const name = formData.get("name");
+  const email = formData.get("email");
+  const message = formData.get("message");
+  const mailto = `mailto:ailtonjrsantossilva12@gmail.com?subject=Contato de ${encodeURIComponent(name)}&body=${encodeURIComponent(message)}%0A%0AEmail: ${encodeURIComponent(email)}`;
+  window.location.href = mailto;
+  feedback.textContent = "Abrindo seu cliente de email...";
+  contactForm.reset();
 });
 
 loadPortfolioData();
