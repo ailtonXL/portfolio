@@ -1,0 +1,38 @@
+Tecnologias necessarias para rodar esta aplicacao (Portfolio Full-Stack)
+
+1. Ambiente e Runtime
+- Sistema operacional: Linux, macOS ou Windows
+- Node.js: 18.x ou superior (recomendado: 20.x LTS)
+- npm: 9.x ou superior
+- Navegador web moderno (Chrome, Firefox, Edge)
+
+2. Backend
+- Node.js
+- Express (API HTTP e servidor de arquivos estaticos)
+
+3. Frontend
+- HTML5
+- CSS3
+- JavaScript (ES6+)
+- Google Fonts (Space Grotesk e IBM Plex Mono, carregadas via CDN)
+
+4. Persistencia local
+- Arquivo JSON local: data/content.json
+- Modulos nativos do Node.js para I/O:
+  - fs
+  - path
+
+5. Dependencias do projeto (package.json)
+- Dependencias de producao:
+  - express@^4.19.2
+- Dependencias de desenvolvimento:
+  - nodemon@^3.1.0
+
+6. Comandos para executar
+- Instalar dependencias: npm install
+- Rodar em desenvolvimento: npm run dev
+- Rodar em producao/local: npm start
+
+7. Porta de execucao
+- Porta padrao: 3000
+- Variavel opcional: PORT (arquivo .env, se desejar)

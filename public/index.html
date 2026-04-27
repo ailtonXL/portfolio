@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Full-Stack</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+
+    <header class="hero container" id="topo">
+      <p class="badge">portfolio full-stack</p>
+      <h1 id="nome">Carregando...</h1>
+      <p class="hero-title" id="titulo"></p>
+      <p class="hero-tagline" id="tagline"></p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contato">Falar comigo</a>
+        <a class="btn btn-ghost" href="#projetos">Ver projetos</a>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="grid-two">
+        <article class="panel reveal">
+          <h2>Sobre</h2>
+          <p id="sobre"></p>
+          <ul class="meta-list">
+            <li><span>Local</span><strong id="local"></strong></li>
+            <li><span>Email</span><strong id="email"></strong></li>
+            <li><span>WhatsApp</span><strong id="whatsapp"></strong></li>
+          </ul>
+        </article>
+
+        <article class="panel reveal">
+          <h2>Stack Principal</h2>
+          <div class="chip-list" id="skills"></div>
+        </article>
+      </section>
+
+      <section class="panel reveal" id="projetos">
+        <div class="section-head">
+          <h2>Projetos em destaque</h2>
+          <div class="social-links">
+            <a id="githubLink" class="social-btn" target="_blank" rel="noreferrer">GitHub</a>
+            <a id="linkedinLink" class="social-btn social-btn--linkedin" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+        </div>
+        <div class="projects" id="projects"></div>
+      </section>
+
+      <section class="panel reveal" id="contato">
+        <h2>Contato</h2>
+        <p>Envie uma mensagem rapida. Ela ficara salva no backend local.</p>
+        <form id="contactForm" class="contact-form">
+          <input type="text" name="name" placeholder="Seu nome" required />
+          <input type="email" name="email" placeholder="Seu email" required />
+          <textarea name="message" rows="4" placeholder="Sua mensagem" required></textarea>
+          <button type="submit" class="btn btn-primary">Enviar</button>
+          <p id="formFeedback" class="feedback"></p>
+        </form>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

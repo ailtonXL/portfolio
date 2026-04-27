@@ -1,0 +1,47 @@
+{
+  "profile": {
+    "name": "Ailton Silva",
+    "title": "Desenvolvedor Full-Stack",
+    "tagline": "Transformo ideias em produtos digitais escalaveis e agradaveis de usar.",
+    "location": "Brasil",
+    "email": "ailtonjrsantossilva12@gmail.com",
+    "whatsapp": "+55 83 9 8893-2009",
+    "about": "Atuo do backend ao frontend, com foco em arquitetura limpa, experiencia do usuario e performance. Gosto de construir interfaces marcantes com APIs robustas e observaveis.",
+    "skills": [
+      "Node.js",
+      "TypeScript",
+      "Python",
+      "Django",
+      "PostgreSQL",
+      "Docker",
+      "React",
+      "CI/CD",
+      "PHP",
+      "Laravel",
+      "Java"
+    ],
+    "social": {
+      "github": "https://github.com/ailtonXL",
+      "linkedin": "https://www.linkedin.com/in/ailton-jr-315b712ba?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+    }
+  },
+  "projects": [
+    {
+      "id": 1,
+      "name": "Painel Operacional",
+      "description": "Dashboard para monitoramento de indicadores com filtros em tempo real e alertas automatizados.",
+      "stack": ["Django", "PostgreSQL", "Chart.js"],
+      "highlight": "Reducao de 35% no tempo de analise",
+      "url": "#"
+    },
+    {
+      "id": 2,
+      "name": "Site de Casamento",
+      "description": "Plataforma completa para casamento com lista de presentes, confirmacao de presenca, carrinho de compras e painel administrativo.",
+      "stack": ["Django", "Python", "SQLite", "HTML", "CSS"],
+      "highlight": "Gestao completa de convidados e presentes",
+      "url": "#"
+    }
+  ],
+  "messages": []
+}
