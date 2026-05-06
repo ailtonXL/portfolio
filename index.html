@@ -63,7 +63,14 @@
         <form id="contactForm" class="contact-form" action="#contato" method="post">
           <input type="text" name="name" placeholder="Seu nome" required />
           <input type="text" name="subject" placeholder="Assunto" required />
-          <input type="email" name="email" placeholder="Seu email" required />
+          <input
+            type="email"
+            name="email"
+            placeholder="Seu email"
+            pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+            title="Digite um email valido, por exemplo: nome@dominio.com"
+            required
+          />
           <input type="tel" name="phone" placeholder="Seu telefone (opcional)" />
           <textarea name="message" rows="4" placeholder="Sua mensagem" required></textarea>
           <button type="submit" class="btn btn-primary">Enviar</button>

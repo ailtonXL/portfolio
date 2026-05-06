@@ -103,7 +103,24 @@ contactForm.addEventListener("submit", async (event) => {
     });
 
     if (!response.ok) {
-      feedback.textContent = "Nao foi possivel enviar. Tente novamente.";
+      let errorMessage = "Nao foi possivel enviar. Tente novamente.";
+
+      try {
+        const errorData = await response.json();
+        if (Array.isArray(errorData.errors) && errorData.errors.length > 0) {
+          errorMessage = errorData.errors[0].message || errorMessage;
+        } else if (errorData.error) {
+          errorMessage = errorData.error;
+        }
+      } catch (_parseError) {
+        // Keep generic message when response is not JSON.
+      }
+
+      if (errorMessage.toLowerCase().includes("email")) {
+        errorMessage = "Email invalido. Use o formato nome@dominio.com.";
+      }
+
+      feedback.textContent = errorMessage;
       return;
     }
 
