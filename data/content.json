@@ -30,7 +30,11 @@
       "id": 1,
       "name": "Painel Operacional",
       "description": "Dashboard para monitoramento de indicadores com filtros em tempo real e alertas automatizados.",
-      "stack": ["Django", "PostgreSQL", "Chart.js"],
+      "stack": [
+        "Django",
+        "PostgreSQL",
+        "Chart.js"
+      ],
       "highlight": "Reducao de 35% no tempo de analise",
       "url": "#"
     },
@@ -38,10 +42,39 @@
       "id": 2,
       "name": "Site de Casamento",
       "description": "Plataforma completa para casamento com lista de presentes, confirmacao de presenca, carrinho de compras e painel administrativo.",
-      "stack": ["Django", "Python", "SQLite", "HTML", "CSS"],
+      "stack": [
+        "Django",
+        "Python",
+        "SQLite",
+        "HTML",
+        "CSS"
+      ],
       "highlight": "Gestao completa de convidados e presentes",
       "url": "#"
     }
   ],
-  "messages": []
+  "contact": {
+    "provider": "formspree",
+    "formEndpoint": "https://formspree.io/f/xeenzezn"
+  },
+  "messages": [
+    {
+      "id": 1778093449202,
+      "name": "Teste",
+      "subject": "Contato",
+      "email": "teste@exemplo.com",
+      "phone": "83999999999",
+      "message": "Mensagem de teste",
+      "createdAt": "2026-05-06T18:50:49.202Z"
+    },
+    {
+      "id": 1778093555496,
+      "name": "siteCasamento",
+      "subject": "23",
+      "email": "663@gn",
+      "phone": "83988932009",
+      "message": "opa",
+      "createdAt": "2026-05-06T18:52:35.496Z"
+    }
+  ]
 }

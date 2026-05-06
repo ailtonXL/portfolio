@@ -13,6 +13,7 @@ const profileEls = {
 const projectsContainer = document.getElementById("projects");
 const contactForm = document.getElementById("contactForm");
 const feedback = document.getElementById("formFeedback");
+let contactConfig = null;
 
 async function loadPortfolioData() {
   try {
@@ -21,9 +22,11 @@ async function loadPortfolioData() {
 
     fillProfile(data.profile);
     fillProjects(data.projects);
+    contactConfig = data.contact || null;
     startRevealAnimation();
   } catch (error) {
     console.error(error);
+    feedback.textContent = "Nao foi possivel carregar os dados do portfolio.";
   }
 }
 
@@ -77,16 +80,39 @@ function startRevealAnimation() {
   });
 }
 
-contactForm.addEventListener("submit", (event) => {
+contactForm.addEventListener("submit", async (event) => {
   event.preventDefault();
+
+  if (!contactConfig?.formEndpoint) {
+    feedback.textContent = "Configure o endpoint do Formspree em data/content.json.";
+    return;
+  }
+
+  feedback.textContent = "Enviando...";
   const formData = new FormData(contactForm);
-  const name = formData.get("name");
-  const email = formData.get("email");
-  const message = formData.get("message");
-  const mailto = `mailto:ailtonjrsantossilva12@gmail.com?subject=Contato de ${encodeURIComponent(name)}&body=${encodeURIComponent(message)}%0A%0AEmail: ${encodeURIComponent(email)}`;
-  window.location.href = mailto;
-  feedback.textContent = "Abrindo seu cliente de email...";
-  contactForm.reset();
+  const payload = Object.fromEntries(formData.entries());
+
+  try {
+    const response = await fetch(contactConfig.formEndpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (!response.ok) {
+      feedback.textContent = "Nao foi possivel enviar. Tente novamente.";
+      return;
+    }
+
+    feedback.textContent = "Mensagem enviada com sucesso.";
+    contactForm.reset();
+  } catch (error) {
+    console.error(error);
+    feedback.textContent = "Falha de rede ao enviar mensagem.";
+  }
 });
 
 loadPortfolioData();

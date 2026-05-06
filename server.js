@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3000;
 const DATA_FILE = path.join(__dirname, "data", "content.json");
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(__dirname));
 
 function readContent() {
   const raw = fs.readFileSync(DATA_FILE, "utf8");
@@ -33,11 +33,11 @@ app.get("/api/projects", (_req, res) => {
 });
 
 app.post("/api/messages", (req, res) => {
-  const { name, email, message } = req.body;
+  const { name, subject, email, phone, message } = req.body;
 
-  if (!name || !email || !message) {
+  if (!name || !subject || !email || !message) {
     return res.status(400).json({
-      error: "Campos obrigatorios: name, email e message"
+      error: "Campos obrigatorios: name, subject, email e message"
     });
   }
 
@@ -45,7 +45,9 @@ app.post("/api/messages", (req, res) => {
   const newMessage = {
     id: Date.now(),
     name: String(name).trim(),
+    subject: String(subject).trim(),
     email: String(email).trim(),
+    phone: phone ? String(phone).trim() : "",
     message: String(message).trim(),
     createdAt: new Date().toISOString()
   };
@@ -61,7 +63,7 @@ app.post("/api/messages", (req, res) => {
 });
 
 app.get("*", (_req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 app.listen(PORT, () => {

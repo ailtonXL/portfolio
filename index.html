@@ -59,10 +59,12 @@
 
       <section class="panel reveal" id="contato">
         <h2>Contato</h2>
-        <p>Preencha e clique em Enviar — seu cliente de email sera aberto com a mensagem pronta.</p>
+        <p>Preencha e clique em Enviar para registrar sua mensagem.</p>
         <form id="contactForm" class="contact-form">
           <input type="text" name="name" placeholder="Seu nome" required />
+          <input type="text" name="subject" placeholder="Assunto" required />
           <input type="email" name="email" placeholder="Seu email" required />
+          <input type="tel" name="phone" placeholder="Seu telefone (opcional)" />
           <textarea name="message" rows="4" placeholder="Sua mensagem" required></textarea>
           <button type="submit" class="btn btn-primary">Enviar</button>
           <p id="formFeedback" class="feedback"></p>
